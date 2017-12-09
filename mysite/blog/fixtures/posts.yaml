@@ -1,0 +1,78 @@
+- model: blog.post
+  pk: 1
+  fields:
+    user: 2
+    title: Title 1
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2017-12-03 12:19:36.555080+00:00'
+- model: blog.post
+  pk: 2
+  fields:
+    user: 3
+    title: Title 2
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2017-12-03 12:19:36.555080+00:00'
+- model: blog.post
+  pk: 3
+  fields:
+    user: 1
+    title: Title 3
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2016-12-13 12:19:36.555080+00:00'
+- model: blog.post
+  pk: 4
+  fields:
+    user: 3
+    title: Title 4
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2015-11-03 12:19:36.555080+00:00'
+- model: blog.post
+  pk: 5
+  fields:
+    user: 2
+    title: Title 5
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2014-05-15 12:19:36.555080+00:00'
+- model: blog.post
+  pk: 6
+  fields:
+    user: 3
+    title: Title 6
+    body: 'Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+      aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+      ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+      id est laborum.'
+    pub_date: !!timestamp '2017-11-11 12:19:36.555080+00:00'
