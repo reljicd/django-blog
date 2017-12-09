@@ -1,0 +1,89 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form action="" method="post" class="form-horizontal">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            {% if form.username.errors %}
+                                <label class="alert alert-danger">{{ form.username.errors }}</label>
+                            {% endif %}
+                            <input type="text"
+                                   placeholder="Username"
+                                   class="form-control"
+                                   name="username"
+                                   required="true"
+                                   value="{{ form.username.value|default:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            {% if form.password.errors %}
+                                <label class="alert alert-danger">{{ form.password.errors }}</label>
+                            {% endif %}
+                            <input type="password"
+                                   placeholder="Password"
+                                   class="form-control"
+                                   name="password"
+                                   required="true"
+                                   value="{{ form.password.value|default:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            {% if form.first_name.errors %}
+                                <label class="alert alert-danger">{{ form.first_name.errors }}</label>
+                            {% endif %}
+                            <input type="text"
+                                   placeholder="First Name"
+                                   class="form-control"
+                                   name="first_name"
+                                   required="true"
+                                   value="{{ form.first_name.value|default:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            {% if form.last_name.errors %}
+                                <label class="alert alert-danger">{{ form.last_name.errors }}</label>
+                            {% endif %}
+                            <input type="text"
+                                   placeholder="Last Name"
+                                   class="form-control"
+                                   name="last_name"
+                                   required="true"
+                                   value="{{ form.last_name.value|default:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            {% if form.email.errors %}
+                                <label class="alert alert-danger">{{ form.email.errors }}</label>
+                            {% endif %}
+                            <input type="text"
+                                   placeholder="Email"
+                                   class="form-control"
+                                   name="email"
+                                   required="true"
+                                   value="{{ form.email.value|default:"" }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

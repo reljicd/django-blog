@@ -1,0 +1,42 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <div class="container">
+
+        {% if first_name or last_name %}
+            <div class="jumbotron">
+                <h1>{{ first_name }} {{ last_name }} - Blog</h1>
+            </div>
+        {% endif %}
+
+        <div class="starter-template">
+            {% for post in posts %}
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h1><a href="{% url 'blog:post' post.pk %}">{{ post.title }}</a></h1>
+                        <div> Created {{ post.pub_date }} by <a
+                                href="{% url 'blog:user_posts' post.user.username %}">{{ post.user.username }}</a>
+                        </div>
+                    </div>
+                    <h3 class="panel-body"> {{ post.body }}</h3>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {% if posts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+
+            {% if posts.paginator.num_pages != 1 %}
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            {% endif %}
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

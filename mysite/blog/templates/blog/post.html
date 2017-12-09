@@ -1,0 +1,47 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <div class="container">
+
+        {# Post #}
+        <div class="jumbotron">
+
+            <h1>{{ post.title }}</h1>
+            <div> Created {{ post.pub_date }} by
+                <a href="{% url 'blog:user_posts' post.user.pk %}">{{ post.user.username }}</a>
+            </div>
+            <h3>{{ post.body }}</h3>
+
+            {% if post.user == user %}
+                <div class="row">
+                    <a href="{% url 'blog:delete_post' post.pk %}" class="col-md-2 pull-right">
+                        <button type="button" class="btn btn-primary btn-block">Delete</button>
+                    </a>
+                    <a href="{% url 'blog:update_post' post.pk %}" class="col-md-2 pull-right">
+                        <button type="button" class="btn btn-primary btn-block">Update</button>
+                    </a>
+                </div>
+            {% endif %}
+
+        </div>
+
+        <h2>Comments:</h2>
+
+        {# Comments #}
+        {% for comment in comments %}
+            <div class="well">
+                <div> Created {{ comment.pub_date }} by
+                    <a href="{% url 'blog:user_posts' comment.user.username %}">{{ comment.user.username }}</a>
+                </div>
+                <h3> {{ comment.body }}</h3>
+            </div>
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'blog:create_comment' post.pk %}" class="col-md-2 pull-right">
+                <button type="button" class="btn btn-primary btn-block">Comment</button>
+            </a>
+        {% endif %}
+
+    </div>
+{% endblock content %}
