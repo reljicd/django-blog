@@ -5,8 +5,7 @@
 This is a demo project for practicing Django.
 The idea was to build some basic blogging platform.
 
-It was made using Python 3.6 and Django 
-Database is SQLite.
+It was made using Python 3.6 and database is SQLite.
 
 There is a login and registration functionality included.
 
@@ -42,12 +41,12 @@ pip install -r requirements.txt
 
 Run migrations:
 ```bash
-python manage.py migrate
+python mysite/manage.py migrate blog
 ```
 
 Initialize data:
 ```bash
-python manage.py loaddata users posts comments
+python mysite/manage.py loaddata users posts comments
 ```
 
 ## How to run
@@ -56,7 +55,7 @@ You can run the application from the command line with manage.py.
 
 Go to the root folder of the application and type:
 ```bash
-$ python manage.py runserver
+$ python mysite/manage.py runserver 8000
 ```
 
 Go to the web browser and visit `http://localhost:8000/home`
@@ -68,6 +67,15 @@ Admin password: **adminpassword**
 User username: **dusan**
 
 User password: **dusanpassword**
+
+## Docker
+
+It is also possible to run the blog app using docker:
+
+```bash
+$ docker build -t reljicd/django-blog -f docker\Dockerfile .
+$ docker run --rm -i -p 8000:8000 reljicd/django-blog
+```
 
 ## Helper Tools
 
