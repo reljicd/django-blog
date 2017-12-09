@@ -157,3 +157,5 @@ venv.bak/
 .mypy_cache/
 
 *.iml
+
+*.sqlite3
