@@ -41,12 +41,12 @@ pip install -r requirements.txt
 
 Run migrations:
 ```bash
-python mysite/manage.py migrate blog
+python manage.py migrate
 ```
 
 Initialize data:
 ```bash
-python mysite/manage.py loaddata users posts comments
+python manage.py loaddata users posts comments
 ```
 
 ## How to run
@@ -55,7 +55,7 @@ You can run the application from the command line with manage.py.
 
 Go to the root folder of the application and type:
 ```bash
-$ python mysite/manage.py runserver 8000
+$ python manage.py runserver 8000
 ```
 
 Go to the web browser and visit `http://localhost:8000/home`
