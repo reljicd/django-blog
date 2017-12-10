@@ -1,8 +1,8 @@
 from django.urls import path
 
-from .views.comment import CommentCreate
-from .views.home import home
-from .views.post import *
+from blog.views.comment import CommentCreate
+from blog.views.home import home
+from blog.views.post import PostView, PostCreate, PostUpdate, PostDelete
 
 app_name = 'blog'
 urlpatterns = [

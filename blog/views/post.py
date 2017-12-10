@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import CreateView, UpdateView, DeleteView
 
-from ..models.comment import Comment
-from ..models.post import Post
+from blog.models.comment import Comment
+from blog.models.post import Post
 
 
 class PostView(generic.DetailView):

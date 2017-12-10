@@ -2,11 +2,10 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.shortcuts import render
 
-from ..models.post import Post
+from blog.models.post import Post
 
 
 def home(request, username=None):
-
     first_name = ''
     last_name = ''
     if username:
@@ -25,5 +24,5 @@ def home(request, username=None):
     posts = paginator.get_page(page)
 
     return render(request, 'blog/home.html', {'posts': posts,
-                                                   'first_name': first_name,
-                                                   'last_name': last_name})
+                                              'first_name': first_name,
+                                              'last_name': last_name})
