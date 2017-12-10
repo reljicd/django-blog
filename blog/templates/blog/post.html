@@ -10,7 +10,7 @@
             <h1>{{ post.title }}</h1>
 
             <div> Created {{ post.pub_date }} by
-                <a href="{% url 'blog:user_posts' post.user.pk %}">{{ post.user.username }}</a>
+                <a href="{% url 'blog:user_posts' post.user.username %}">{{ post.user.username }}</a>
             </div>
 
             <!-- Post body -->
