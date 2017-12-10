@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from blog.models.post import Post
 
+NUM_OF_PAGES = 5
+
 
 def home(request, username=None):
     first_name = ''
@@ -18,7 +20,7 @@ def home(request, username=None):
 
     post_list = post_list.order_by('-pub_date')
 
-    paginator = Paginator(post_list, 5)  # Show 5 posts per page
+    paginator = Paginator(post_list, NUM_OF_PAGES)  # Show NUM_OF_PAGES posts per page
     page = request.GET.get('page')
 
     posts = paginator.get_page(page)
