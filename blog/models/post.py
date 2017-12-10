@@ -11,3 +11,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('blog:post', kwargs={'pk': self.pk})
+
+    def __str__(self):
+        return '"{title}" by {username}'.format(title=self.title,
+                                                username=self.user.username)
