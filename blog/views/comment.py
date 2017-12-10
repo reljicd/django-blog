@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView
 
 from blog.models.comment import Comment
@@ -10,7 +10,7 @@ class CommentCreate(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ['body']
     template_name = 'blog/create_comment.html'
-    login_url = '/login'
+    login_url = reverse_lazy('login')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

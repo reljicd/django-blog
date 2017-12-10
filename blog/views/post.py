@@ -24,7 +24,7 @@ class PostCreate(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'body']
     template_name = 'blog/create_post.html'
-    login_url = '/login'
+    login_url = reverse_lazy('login')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -35,7 +35,7 @@ class PostUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'body']
     template_name = 'blog/create_post.html'
-    login_url = '/login'
+    login_url = reverse_lazy('login')
 
     def test_func(self):
         return Post.objects.get(id=self.kwargs['pk']).user == self.request.user
@@ -44,7 +44,7 @@ class PostUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
     success_url = reverse_lazy('blog:home')
-    login_url = '/login'
+    login_url = reverse_lazy('login')
 
     def test_func(self):
         return Post.objects.get(id=self.kwargs['pk']).user == self.request.user

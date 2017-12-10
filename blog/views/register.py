@@ -11,5 +11,6 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
+        # Hash password before sending it to super
         form.instance.password = make_password(form.instance.password)
         return super().form_valid(form)
