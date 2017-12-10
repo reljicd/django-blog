@@ -3,23 +3,33 @@
 {% block content %}
     <div class="container">
 
-        {# Post #}
+        <!-- Post -->
         <div class="jumbotron">
 
+            <!-- Post title -->
             <h1>{{ post.title }}</h1>
+
             <div> Created {{ post.pub_date }} by
                 <a href="{% url 'blog:user_posts' post.user.pk %}">{{ post.user.username }}</a>
             </div>
+
+            <!-- Post body -->
             <h3>{{ post.body }}</h3>
 
+            <!-- Show Update and Delete button only if User is the owner of the Post -->
             {% if post.user == user %}
                 <div class="row">
+
+                    <!-- Delete button -->
                     <a href="{% url 'blog:delete_post' post.pk %}" class="col-md-2 pull-right">
                         <button type="button" class="btn btn-primary btn-block">Delete</button>
                     </a>
+
+                    <!-- Update button -->
                     <a href="{% url 'blog:update_post' post.pk %}" class="col-md-2 pull-right">
                         <button type="button" class="btn btn-primary btn-block">Update</button>
                     </a>
+
                 </div>
             {% endif %}
 
@@ -27,20 +37,28 @@
 
         <h2>Comments:</h2>
 
-        {# Comments #}
+        <!-- Comments -->
         {% for comment in comments %}
             <div class="well">
+
                 <div> Created {{ comment.pub_date }} by
                     <a href="{% url 'blog:user_posts' comment.user.username %}">{{ comment.user.username }}</a>
                 </div>
+
+                <!-- Comment body -->
                 <h3> {{ comment.body }}</h3>
+
             </div>
         {% endfor %}
 
+        <!-- Show Comment button only if User is authenticated -->
         {% if user.is_authenticated %}
+
+            <!-- Comment button -->
             <a href="{% url 'blog:create_comment' post.pk %}" class="col-md-2 pull-right">
                 <button type="button" class="btn btn-primary btn-block">Comment</button>
             </a>
+
         {% endif %}
 
     </div>

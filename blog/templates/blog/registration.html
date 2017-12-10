@@ -4,85 +4,118 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
+
+                <!-- Form - User -->
                 <form action="" method="post" class="form-horizontal">
+
                     {% csrf_token %}
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Errors - username -->
                             {% if form.username.errors %}
                                 <label class="alert alert-danger">{{ form.username.errors }}</label>
                             {% endif %}
+
+                            <!-- Form field - username -->
                             <input type="text"
                                    placeholder="Username"
                                    class="form-control"
                                    name="username"
-                                   required="true"
+                                   required
                                    value="{{ form.username.value|default:"" }}">
+
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Errors - password -->
                             {% if form.password.errors %}
                                 <label class="alert alert-danger">{{ form.password.errors }}</label>
                             {% endif %}
+
+                            <!-- Form field - password -->
                             <input type="password"
                                    placeholder="Password"
                                    class="form-control"
                                    name="password"
-                                   required="true"
+                                   required
                                    value="{{ form.password.value|default:"" }}">
+
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Errors - first_name -->
                             {% if form.first_name.errors %}
                                 <label class="alert alert-danger">{{ form.first_name.errors }}</label>
                             {% endif %}
+
+                            <!-- Form field - first_name -->
                             <input type="text"
                                    placeholder="First Name"
                                    class="form-control"
                                    name="first_name"
-                                   required="true"
+                                   required
                                    value="{{ form.first_name.value|default:"" }}">
+
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Errors - last_name -->
                             {% if form.last_name.errors %}
                                 <label class="alert alert-danger">{{ form.last_name.errors }}</label>
                             {% endif %}
+
+                            <!-- Form field - last_name -->
                             <input type="text"
                                    placeholder="Last Name"
                                    class="form-control"
                                    name="last_name"
-                                   required="true"
+                                   required
                                    value="{{ form.last_name.value|default:"" }}">
+
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Errors - email -->
                             {% if form.email.errors %}
                                 <label class="alert alert-danger">{{ form.email.errors }}</label>
                             {% endif %}
+
+                            <!-- Form field - email -->
                             <input type="text"
                                    placeholder="Email"
                                    class="form-control"
                                    name="email"
-                                   required="true"
+                                   required
                                    value="{{ form.email.value|default:"" }}">
+
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
                         </div>
                     </div>
+
                 </form>
+
             </div>
         </div>
     </div>

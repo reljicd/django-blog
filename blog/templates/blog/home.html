@@ -3,12 +3,14 @@
 {% block content %}
     <div class="container">
 
+        <!-- Show this section only for User Blog view -->
         {% if first_name or last_name %}
             <div class="jumbotron">
                 <h1>{{ first_name }} {{ last_name }} - Blog</h1>
             </div>
         {% endif %}
 
+        <!-- Show List of Posts -->
         <div class="starter-template">
             {% for post in posts %}
                 <div class="panel">
@@ -23,6 +25,7 @@
             {% endfor %}
         </div>
 
+        <!-- Pagination -->
         <div class="pagination">
             {% if posts.has_previous %}
                 <a href="?page=1">&laquo; first</a>
@@ -38,5 +41,6 @@
                 <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </div>
+
     </div>
 {% endblock content %}

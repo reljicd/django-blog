@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="container">
-
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+
+                <!-- Errors messages -->
                 <div class="col-sm-9">
+
                     {% if form.errors %}
                         <div class="alert alert-danger">Your username and password didn't match. Please try again.</div>
                     {% else %}
@@ -19,33 +21,50 @@
                             {% endif %}
                         {% endif %}
                     {% endif %}
+
                 </div>
 
+                <!-- Form - Login -->
                 <form method="post" action="{% url 'login' %}" class="form-horizontal">
+
                     {% csrf_token %}
+
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Form field - username -->
                             <input type="text"
                                    placeholder="Username"
                                    class="form-control"
                                    name="username">
+
                         </div>
                     </div>
+
                     <div class="form-group">
                         <div class="col-sm-9">
+
+                            <!-- Form field - password -->
                             <input type="password"
                                    placeholder="Password"
                                    class="form-control"
                                    name="password">
+
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-sm-9">
+
                             <input type="submit" class="btn  btn-primary btn-block" value="Login"/>
+
                         </div>
                     </div>
+
+                    <!-- Form field - next -->
+                    <!-- Used to configure redirect after successful login -->
                     <input type="hidden" name="next" value="{% url 'blog:home' %}"/>
+
                 </form>
 
             </div>

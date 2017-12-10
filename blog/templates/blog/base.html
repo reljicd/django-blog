@@ -1,3 +1,4 @@
+<!-- this is base template with navbar and footer -->
 {% load static %}
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-<!-- this is header -->
+<!-- navbar -->
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -54,26 +55,31 @@
     </div>
 </nav>
 
-
 <div id="content">
     {% block content %}{% endblock %}
 </div>
 
 <hr>
-<div class="container">
 
-    <!-- this is footer -->
+<!-- footer -->
+<div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <p class="text-center">
-                {% if user.is_authenticated %}
+
+            <!-- Logged user info -->
+            {% if user.is_authenticated %}
+                <p class="text-center">
                     | Logged user: {{ user.username }}
-                    | Email: {{  user.email }}
-                    | Admin:{{  user.is_superuser }}
+                    | Email: {{ user.email }}
+                    | Admin:{{ user.is_superuser }}
                     | <a href="{% url 'logout' %}">Sign Out</a>
-                    </p>
-                {% endif %}
-            <div><p class="text-center">&copy; 2017 Dusan Reljic</p></div>
+                </p>
+            {% endif %}
+
+            <div>
+                <p class="text-center">&copy; 2017 Dusan Reljic</p>
+            </div>
+
         </div>
     </div>
 
