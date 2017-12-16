@@ -5,15 +5,15 @@ from django.urls import reverse
 from blog.models.post import Post
 from blog.views.home import NUM_OF_POSTS
 
+USERNAME = 'john_lennon'
+PASSWORD = 'john_password'
+
 
 class HomeViewTest(TestCase):
-    USERNAME = 'john_lennon'
-    PASSWORD = 'john_password'
-
     fixtures = ['users', 'posts', 'comments']
 
     def setUp(self):
-        self.test_user = User.objects.create_user(self.USERNAME, 'lennon@thebeatles.com', self.PASSWORD)
+        self.test_user = User.objects.create_user(USERNAME, 'lennon@thebeatles.com', PASSWORD)
         self.test_user.first_name = 'John'
         self.test_user.last_name = 'Lennon'
         self.test_user.save()
@@ -27,7 +27,7 @@ class HomeViewTest(TestCase):
         posts = [post.__repr__() for post in Post.objects.all().order_by('-pub_date')[:NUM_OF_POSTS]]
         self.assertQuerysetEqual(response.context['posts'], posts)
 
-    def test_home_page_non_logged_user_buttons(self):
+    def test_home_page_anonymous_user_buttons(self):
         url = reverse('blog:home')
         response = self.client.get(url)
         self.assertContains(response, 'Registration')
@@ -36,7 +36,7 @@ class HomeViewTest(TestCase):
         self.assertNotContains(response, 'Sign Out')
 
     def test_home_page_logged_user_buttons(self):
-        self.client.login(username=self.USERNAME, password=self.PASSWORD)
+        self.client.login(username=USERNAME, password=PASSWORD)
         url = reverse('blog:home')
         response = self.client.get(url)
         self.assertNotContains(response, 'Registration')
