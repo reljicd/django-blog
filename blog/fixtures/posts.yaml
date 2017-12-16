@@ -10,7 +10,7 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2017-12-03 12:19:36.555080+00:00'
+    pub_date: '2017-12-03T12:19:36+00:00'
 - model: blog.post
   pk: 2
   fields:
@@ -23,7 +23,7 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2017-12-03 12:19:36.555080+00:00'
+    pub_date: '2017-12-03T12:19:36+00:00'
 - model: blog.post
   pk: 3
   fields:
@@ -36,7 +36,7 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2016-12-13 12:19:36.555080+00:00'
+    pub_date: '2016-12-13T12:19:36+00:00'
 - model: blog.post
   pk: 4
   fields:
@@ -49,7 +49,7 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2015-11-03 12:19:36.555080+00:00'
+    pub_date: '2015-11-03T12:19:36+00:00'
 - model: blog.post
   pk: 5
   fields:
@@ -62,7 +62,7 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2014-05-15 12:19:36.555080+00:00'
+    pub_date: '2014-05-15T12:19:36+00:00'
 - model: blog.post
   pk: 6
   fields:
@@ -75,4 +75,4 @@
       voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
       occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
       id est laborum.'
-    pub_date: !!timestamp '2017-11-11 12:19:36.555080+00:00'
+    pub_date: '2017-11-11T12:19:36+00:00'
