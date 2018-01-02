@@ -136,7 +136,34 @@ Go to the web browser and visit `http://localhost:8000/admin`
 
 ### Tests
 
+#### Default
+Activate virtual environment:
+
+On macOS and Linux:
+```bash
+$ source env/bin/activate
+```
+
+On Windows:
+```bash
+$ .\env\Scripts\activate
+```
+
 Running tests:
 ```bash
 $ python manage.py test blog
+```
+
+#### Docker
+
+It is also possible to run tests using Docker:
+
+Build the Docker image:
+```bash
+$ docker build -t reljicd/django-blog -f docker\Dockerfile .
+```
+
+Run the Docker container:
+```bash
+$ docker run --rm reljicd/django-blog test blog
 ```
