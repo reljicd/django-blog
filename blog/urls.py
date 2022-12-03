@@ -15,9 +15,11 @@ urlpatterns = [
     # ex: /blog/post/create/
     path('post/create/', PostCreate.as_view(), name='create_post'),
     # ex: /blog/post/5/update/
-    path('post/create/<int:pk>/update', PostUpdate.as_view(), name='update_post'),
+    path('post/create/<int:pk>/update', PostUpdate.as_view(),
+         name='update_post'),
     # ex: /blog/post/5/delete/
     path('post/<int:pk>/delete/', PostDelete.as_view(), name='delete_post'),
     # ex: /blog/post/5/comment/
-    path('post/<int:pk>/comment/', CommentCreate.as_view(), name='create_comment')
+    path('post/<int:pk>/comment/', CommentCreate.as_view(),
+         name='create_comment')
 ]

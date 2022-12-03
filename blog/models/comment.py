@@ -11,6 +11,5 @@ class Comment(models.Model):
     pub_date = models.DateTimeField('date published', auto_now_add=True)
 
     def __str__(self):
-        return '"{body}..." on {post_title} by {username}'.format(body=self.body[:20],
-                                                                  post_title=self.post.title,
-                                                                  username=self.user.username)
+        return (f'"{self.body[:20]}..." '
+                f'on {self.post.title} by {self.user.username}')
