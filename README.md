@@ -80,7 +80,7 @@ It is also possible to run the blog app using docker:
 
 Build the Docker image:
 ```bash
-$ docker build -t reljicd/django-blog -f docker\Dockerfile .
+$ docker build -t reljicd/django-blog -f docker/Dockerfile .
 ```
 
 Run the Docker container:
@@ -99,7 +99,7 @@ $ scripts/run_docker.sh
 
 ## Post Installation
 
-Go to the web browser and visit `http://localhost:8000/home`
+Go to the web browser and visit `http://localhost:8000/blog`
 
 Admin username: **admin**
 
@@ -160,7 +160,7 @@ It is also possible to run tests using Docker:
 
 Build the Docker image:
 ```bash
-$ docker build -t reljicd/django-blog -f docker\Dockerfile .
+$ docker build -t reljicd/django-blog -f docker/Dockerfile .
 ```
 
 Run the Docker container:
