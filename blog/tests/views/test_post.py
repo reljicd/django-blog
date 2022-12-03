@@ -17,7 +17,9 @@ class PostViewTest(TestCase):
             USERNAME_JOHN, 'lennon@thebeatles.com', PASSWORD_JOHN)
         self.test_user_george = User.objects.create_user(
             USERNAME_GEORGE, 'lennon@thebeatles.com', PASSWORD_GEORGE)
-        self.test_post_john = Post.objects.create(user=self.test_user_john, title='Title 1', body='Lorem ipsum')
+        self.test_post_john = Post.objects.create(user=self.test_user_john,
+                                                  title='Title 1',
+                                                  body='Lorem ipsum')
         self.url = reverse('blog:post', kwargs={'pk': self.test_post_john.id})
 
     def test_viewing_post_by_author(self):
@@ -42,18 +44,22 @@ class PostCreateTest(TestCase):
 
     def test_create_post_by_anonymous_user(self):
         response = self.client.get(self.url)
-        self.assertRedirects(response, '{}?next={}'.format(reverse('login'), self.url))
+        self.assertRedirects(response,
+                             f'{reverse("login")}?next={self.url}')
 
     def test_create_post_by_logged_user(self):
         self.client.login(username=USERNAME_JOHN, password=PASSWORD_JOHN)
 
         # Empty fields in form
         response = self.client.post(self.url, {'title': '', 'body': ''})
-        self.assertFormError(response, 'form', 'title', 'This field is required.')
-        self.assertFormError(response, 'form', 'body', 'This field is required.')
+        self.assertFormError(response, 'form', 'title',
+                             'This field is required.')
+        self.assertFormError(response, 'form', 'body',
+                             'This field is required.')
 
         # Non-empty fields in form
-        response = self.client.post(self.url, {'title': 'Title 3', 'body': 'Lorem ipsum'})
+        response = self.client.post(self.url,
+                                    {'title': 'Title 3', 'body': 'Lorem ipsum'})
         self.assertRedirects(response, reverse('blog:post', kwargs={'pk': 1}))
 
 
@@ -64,29 +70,40 @@ class PostUpdateTest(TestCase):
             USERNAME_JOHN, 'lennon@thebeatles.com', PASSWORD_JOHN)
         self.test_user_george = User.objects.create_user(
             USERNAME_GEORGE, 'lennon@thebeatles.com', PASSWORD_GEORGE)
-        self.test_post_john = Post.objects.create(user=self.test_user_john, title='Title 1', body='Lorem ipsum')
-        self.url = reverse('blog:update_post', kwargs={'pk': self.test_post_john.id})
+        self.test_post_john = Post.objects.create(user=self.test_user_john,
+                                                  title='Title 1',
+                                                  body='Lorem ipsum')
+        self.url = reverse('blog:update_post',
+                           kwargs={'pk': self.test_post_john.id})
 
     def test_update_post_by_anonymous_user(self):
-        response = self.client.post(self.url, {'title': 'Title 3', 'body': 'Lorem ipsum'})
-        self.assertRedirects(response, '{}?next={}'.format(reverse('login'), self.url))
+        response = self.client.post(self.url,
+                                    {'title': 'Title 3', 'body': 'Lorem ipsum'})
+        self.assertRedirects(response,
+                             '{}?next={}'.format(reverse('login'), self.url))
 
     def test_update_post_by_author(self):
         self.client.login(username=USERNAME_JOHN, password=PASSWORD_JOHN)
 
         # Empty fields in form
         response = self.client.post(self.url, {'title': '', 'body': ''})
-        self.assertFormError(response, 'form', 'title', 'This field is required.')
-        self.assertFormError(response, 'form', 'body', 'This field is required.')
+        self.assertFormError(response, 'form', 'title',
+                             'This field is required.')
+        self.assertFormError(response, 'form', 'body',
+                             'This field is required.')
 
         # Non-empty fields in form
-        response = self.client.post(self.url, {'title': 'Title 3', 'body': 'Lorem ipsum'})
-        self.assertRedirects(response, reverse('blog:post', kwargs={'pk': self.test_post_john.id}))
+        response = self.client.post(self.url,
+                                    {'title': 'Title 3', 'body': 'Lorem ipsum'})
+        self.assertRedirects(response,
+                             reverse('blog:post',
+                                     kwargs={'pk': self.test_post_john.id}))
 
     def test_update_post_by_non_author(self):
         self.client.login(username=USERNAME_GEORGE, password=PASSWORD_GEORGE)
-        response = self.client.post(self.url, {'title': 'Title 3', 'body': 'Lorem ipsum'})
-        self.assertRedirects(response, '{}?next={}'.format(reverse('login'), self.url))
+        response = self.client.post(self.url,
+                                    {'title': 'Title 3', 'body': 'Lorem ipsum'})
+        assert response.status_code == 403
 
 
 class PostDeleteTest(TestCase):
@@ -96,12 +113,16 @@ class PostDeleteTest(TestCase):
             USERNAME_JOHN, 'lennon@thebeatles.com', PASSWORD_JOHN)
         self.test_user_george = User.objects.create_user(
             USERNAME_GEORGE, 'lennon@thebeatles.com', PASSWORD_GEORGE)
-        self.test_post_john = Post.objects.create(user=self.test_user_john, title='Title 1', body='Lorem ipsum')
-        self.url = reverse('blog:delete_post', kwargs={'pk': self.test_post_john.id})
+        self.test_post_john = Post.objects.create(user=self.test_user_john,
+                                                  title='Title 1',
+                                                  body='Lorem ipsum')
+        self.url = reverse('blog:delete_post',
+                           kwargs={'pk': self.test_post_john.id})
 
     def test_delete_post_by_anonymous_user(self):
         response = self.client.post(self.url)
-        self.assertRedirects(response, '{}?next={}'.format(reverse('login'), self.url))
+        self.assertRedirects(response,
+                             f'{reverse("login")}?next={self.url}')
 
     def test_delete_post_by_author(self):
         self.client.login(username=USERNAME_JOHN, password=PASSWORD_JOHN)
@@ -111,4 +132,4 @@ class PostDeleteTest(TestCase):
     def test_delete_post_by_non_author(self):
         self.client.login(username=USERNAME_GEORGE, password=PASSWORD_GEORGE)
         response = self.client.post(self.url)
-        self.assertRedirects(response, '{}?next={}'.format(reverse('login'), self.url))
+        assert response.status_code == 403

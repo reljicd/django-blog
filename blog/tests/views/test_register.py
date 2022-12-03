@@ -11,24 +11,29 @@ class PostCreateTest(TestCase):
         url = reverse('register')
 
         # Empty fields in form
-        response = self.client.post(url, {'username': '',
-                                          'password': '',
-                                          'first_name': '',
-                                          'last_name': '',
-                                          'email': ''})
-        self.assertFormError(response, 'form', 'username', 'This field is required.')
-        self.assertFormError(response, 'form', 'password', 'This field is required.')
+        response = self.client.post(url,
+                                    {'username': '',
+                                     'password': '',
+                                     'first_name': '',
+                                     'last_name': '',
+                                     'email': ''})
+        self.assertFormError(response, 'form', 'username',
+                             'This field is required.')
+        self.assertFormError(response, 'form', 'password',
+                             'This field is required.')
 
         # Register User
-        response = self.client.post(url, {'username': USERNAME_JOHN,
-                                          'password': PASSWORD_JOHN,
-                                          'first_name': 'John',
-                                          'last_name': 'Lennon',
-                                          'email': 'lennon@thebeatles.com'})
+        response = self.client.post(url,
+                                    {'username': USERNAME_JOHN,
+                                     'password': PASSWORD_JOHN,
+                                     'first_name': 'John',
+                                     'last_name': 'Lennon',
+                                     'email': 'lennon@thebeatles.com'})
         self.assertRedirects(response, reverse('login'))
 
         # Log in newly registered user
-        user_logged_in = self.client.login(username=USERNAME_JOHN, password=PASSWORD_JOHN)
+        user_logged_in = self.client.login(username=USERNAME_JOHN,
+                                           password=PASSWORD_JOHN)
         self.assertTrue(user_logged_in)
 
         url = reverse('blog:home')
