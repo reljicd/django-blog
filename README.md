@@ -5,7 +5,7 @@
 This is a demo project for practicing Django.
 The idea was to build some basic blogging platform.
 
-It was made using **Python 3.7** + **Django** and database is **SQLite**.
+It was made using **Python 3.11** + **Django** and database is **SQLite**.
 **Bootstrap** was used for styling.
 Testing is done using **untitest** module.
 
