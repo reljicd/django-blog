@@ -80,7 +80,7 @@ class PostUpdateTest(TestCase):
         response = self.client.post(self.url,
                                     {'title': 'Title 3', 'body': 'Lorem ipsum'})
         self.assertRedirects(response,
-                             '{}?next={}'.format(reverse('login'), self.url))
+                             f'{reverse("login")}?next={self.url}')
 
     def test_update_post_by_author(self):
         self.client.login(username=USERNAME_JOHN, password=PASSWORD_JOHN)
@@ -103,7 +103,7 @@ class PostUpdateTest(TestCase):
         self.client.login(username=USERNAME_GEORGE, password=PASSWORD_GEORGE)
         response = self.client.post(self.url,
                                     {'title': 'Title 3', 'body': 'Lorem ipsum'})
-        assert response.status_code == 403
+        self.assertEqual(response.status_code, 403)
 
 
 class PostDeleteTest(TestCase):
@@ -132,4 +132,4 @@ class PostDeleteTest(TestCase):
     def test_delete_post_by_non_author(self):
         self.client.login(username=USERNAME_GEORGE, password=PASSWORD_GEORGE)
         response = self.client.post(self.url)
-        assert response.status_code == 403
+        self.assertEqual(response.status_code, 403)
